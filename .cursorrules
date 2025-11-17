@@ -1,0 +1,118 @@
+# Cursor Rules for Video Library MVP
+
+## Project Context
+This is a Video Library MVP built as a monorepo with:
+- Backend: Node.js + TypeScript + Express
+- Frontend: React Native + Expo + TypeScript
+- Database: In-memory JSON (MVP)
+
+## Code Style & Standards
+
+### TypeScript
+- Use strict TypeScript with proper typing
+- Prefer interfaces over types for object shapes
+- Use enums for fixed sets of values
+- Avoid `any` - use `unknown` if type is truly unknown
+- Use async/await consistently, avoid promise chains
+
+### Backend Architecture
+- Follow SOLID principles strictly
+- Separate concerns: Controllers → Services → DAL → Database
+- All database operations must be async (simulating real DB)
+- Use numeric IDs for seasons and episodes
+- Controllers handle HTTP, Services handle business logic, DAL handles data access
+- Use enums for constants (e.g., SortOption, SortOrder)
+
+### Frontend Architecture
+- Use React Query for all data fetching
+- Container/Presentational pattern: containers have logic, components are presentational
+- Separate styles, types, and logic into different files
+- Each component should have its own folder with index.tsx, styles.ts, types.ts
+- Use custom hooks for reusable logic
+- Prefer functional components with hooks
+
+### Code Organization
+- Keep functions small and focused (single responsibility)
+- Extract helper functions for complex logic
+- Use meaningful variable and function names
+- Add JSDoc comments for public functions
+- Group related functionality together
+
+### Error Handling
+- Always handle errors appropriately
+- Use try-catch in async functions
+- Return proper HTTP status codes
+- Log errors with context (console.error is fine for MVP)
+- Provide user-friendly error messages
+
+### Testing Considerations
+- Write testable code (pure functions where possible)
+- Keep business logic separate from framework code
+- Use dependency injection for testability
+
+## File Naming
+- Use PascalCase for components and classes
+- Use camelCase for functions and variables
+- Use kebab-case for file names (except components which use PascalCase)
+- Use descriptive names that indicate purpose
+
+## Git Practices
+- Write clear, descriptive commit messages
+- Make frequent, logical commits
+- Don't commit generated files or dependencies
+
+## Performance
+- Use React Query caching effectively
+- Avoid unnecessary re-renders
+- Use useMemo/useCallback when appropriate
+- Optimize database queries (avoid N+1 problems)
+
+## Security
+- Validate all inputs
+- Sanitize user data
+- Use parameterized queries (when we move to real DB)
+- Don't expose sensitive information in errors
+
+## Documentation
+- Document complex logic
+- Keep README and architecture docs updated
+- Add comments for non-obvious decisions
+
+## When Adding Features
+1. Consider the architecture - where does it fit?
+2. Follow existing patterns
+3. Update types first
+4. Add tests if time permits
+5. Update documentation
+
+## Common Patterns
+
+### Adding a New Rail Type
+1. Add to RailType enum in `railService/config.ts`
+2. Add config to RAIL_CONFIG array
+3. Create generator function in `railService/railGenerators.ts`
+4. Add case to switch statement in `railService.ts`
+
+### Adding a New API Endpoint
+1. Add route in `routes/`
+2. Add controller method in `controllers/`
+3. Add service method if business logic needed
+4. Add DAL method if data access needed
+5. Update types if needed
+
+### Adding a New Component
+1. Create folder in `components/`
+2. Add `index.tsx` (component logic)
+3. Add `styles.ts` (StyleSheet.create)
+4. Add `types.ts` (TypeScript interfaces)
+5. Export from component folder
+
+## AI Assistant Guidelines
+- Suggest improvements proactively
+- Point out potential bugs or issues
+- Recommend best practices
+- Help refactor when code gets complex
+- Explain decisions when asked
+- Keep code DRY (Don't Repeat Yourself)
+- Prefer composition over inheritance
+

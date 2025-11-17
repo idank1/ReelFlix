@@ -1,0 +1,16 @@
+{
+  "name": "appreel-video-library",
+  "version": "1.0.0",
+  "description": "Video Library MVP - Monorepo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  }
+}
+

@@ -12,36 +12,25 @@ This is a monorepo containing:
 
 ### Prerequisites
 - Node.js (latest LTS version)
-- npm or yarn
+- npm (comes with Node.js)
 
-### Installation
-
-```bash
-# Install all dependencies
-npm run install:all
-```
-
-### Development
+### Quick Start
 
 ```bash
-# Start backend server (from root)
-npm run dev:backend
+# Make the script executable (first time only)
+chmod +x start.sh
 
-# Start frontend app (from root, in a new terminal)
-npm run dev:frontend
+# Start everything (installs dependencies if needed)
+./start.sh
 ```
 
-Or run them separately:
+The script will:
+- Check for Node.js and npm
+- Install dependencies if needed
+- Start the backend server
+- Start the frontend (Expo)
 
-```bash
-# Backend
-cd backend
-npm run dev
-
-# Frontend
-cd frontend
-npm start
-```
+For detailed setup instructions, see [SETUP.md](SETUP.md).
 
 ## Features
 
